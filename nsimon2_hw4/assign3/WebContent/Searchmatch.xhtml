@@ -1,0 +1,90 @@
+<!-- NeethuSimon Assignment4
+list of Search-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" >    
+
+
+<h:head>
+
+<title>list of survey Search</title>
+
+</h:head>
+<h:body>
+<h1>Search list </h1>
+<h:dataTable border="1" var ="stud" value="#{studentService.studentmatch}"
+   styleClass="mainTable"
+    headerClass="heading"
+rowClasses="even,odd">>
+<h:column>
+<f:facet name ="header">First Name</f:facet>
+#{stud.firstName}
+</h:column>
+<h:column>
+<f:facet name ="header">Last Name</f:facet>
+#{stud.lastName}
+</h:column>
+<h:column>
+<f:facet name ="header">Street Address</f:facet>
+#{stud.streetAddress}
+</h:column>
+<h:column>
+<f:facet name ="header">City</f:facet>
+#{stud.city}
+</h:column>
+<h:column>
+<f:facet name ="header">State</f:facet>
+#{stud.state}
+</h:column>
+<h:column>
+<f:facet name ="header">Zip</f:facet>
+#{stud.zip}
+</h:column>
+<h:column>
+<f:facet name ="header">Phone</f:facet>
+#{stud.phone}
+</h:column>
+<h:column>
+<f:facet name ="header">Email</f:facet>
+#{stud.email}
+</h:column>
+<h:column>
+<f:facet name ="header">Survey Date</f:facet>
+#{stud.surveydate}
+</h:column>
+<h:column>
+<f:facet name ="header">Semester StartDate</f:facet>
+#{stud.semesterstartdate}
+</h:column>
+
+<h:column>
+<f:facet name ="header">How came to know about GMU</f:facet>
+#{stud.interest}
+</h:column>
+<h:column>
+<f:facet name ="header">How likely recommend GMU?</f:facet>
+#{stud.rating}
+</h:column>
+<h:column>
+<f:facet name ="header">Raffle</f:facet>
+#{stud.data}
+</h:column>
+<h:column>
+<f:facet name ="header">Comments</f:facet>
+#{stud.comments}
+</h:column>
+<h:column>
+			<f:facet name="header">Action</f:facet>
+			<h:form>
+				<h:commandLink value="delete" action="#{studentService.delete(stud.sid)}">
+					<f:param name="id" value="sid" />
+				</h:commandLink>
+			</h:form>
+</h:column>
+</h:dataTable>
+<a href= "https://s3-us-west-2.amazonaws.com/nsimon2swe645/index.html">return to home page</a>
+ <p><a href="http://ec2-52-35-123-130.us-west-2.compute.amazonaws.com/nsimon2_hw4/search.xhtml"> return to search records </a></p>
+</h:body>
+</html>
