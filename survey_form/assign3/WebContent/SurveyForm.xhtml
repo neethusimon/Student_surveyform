@@ -1,0 +1,207 @@
+<!-- NeethuSimon Assignment2
+ student survey form  to allow a user to enter the survey data-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"   
+      xmlns:p="http://primefaces.org/ui"> 
+
+
+<h:head>
+
+<title>Survey Form nsimon2</title>
+<link href= "https://s3.amazonaws.com/nsimon2/tablestyle.css" rel="stylesheet"
+    type="text/css" />
+
+</h:head>
+<h:body>
+<h1 align="center">Department of Computer Science</h1>
+<h2 align ="center"> Survey form</h2>
+    <p align ="center">Please fill out this form to help  us improve our site.</p>
+
+     <h:form name ="forms" method="post" >
+       <p:messages  styleClass= "error"/>
+          <h:panelGrid columns="2" >
+ 	   
+ 			First Name:*
+ 			<p:inputText value="#{studentService.student.firstName}" 
+                          required="true"
+                          requiredMessage="You must enter First Name"
+                          validatorMessage="Name should contain only alphabets and should not be more 
+than 15 characters"
+                           id="firstName" >
+                  <f:validateLength  maximum="15" />
+                  <f:validateRegex pattern="[a-zA-Z ]*"/>  
+            </p:inputText>
+          
+           
+           Last Name:*
+ 			<p:inputText value="#{studentService.student.lastName}" 
+                          required="true"
+                          requiredMessage="You must enter Last Name"
+                          validatorMessage="Name should contain only alphabets and should not be more 
+than 15 characters"
+                           id="lastName">
+                  <f:validateLength  maximum="15"/>
+                  <f:validateRegex pattern="[a-zA-Z ]*"/> 
+            </p:inputText>
+           
+ 		
+ 		Street Address:*
+ 			<p:inputText value="#{studentService.student.streetAddress}" 
+                          required="true"
+                          requiredMessage="You must enter Street Address"
+                          validatorMessage="The address  should contain only appropriate numeric, alphabet, or 
+alphanumeric characters not more than 30 characters"
+                           id="streetAddress">
+                  <f:validateLength  maximum="30"/>
+                  <f:validateRegex pattern="[a-zA-Z0-9 ]*"/>
+            </p:inputText>
+           
+            	Zip:*
+             	<p:inputText value="#{studentService.student.zip}" 
+                          required="true"
+                          requiredMessage="You must enter zip"
+                          validatorMessage="zipcode should be exactly five digits">
+                        
+                           <f:ajax event ="keyup" render ="city state"></f:ajax>
+                  <f:validateLength  maximum="5" minimum="5"/>
+                  <f:validateRegex pattern="[0-9]*"/>
+                  
+                </p:inputText>
+             
+           
+        City:*
+ 			<p:inputText value="#{studentService.student.city}" 
+                          required="true"
+                           requiredMessage="You must enter city"
+                          validatorMessage="city should contain only appropriate numeric, alphabet, or 
+alphanumeric characters"
+                           id="city">
+                  <f:validateLength  maximum="30"/>
+                  <f:validateRegex pattern="[a-zA-Z0-9 ]*" />
+            </p:inputText>
+          
+           
+              State:*
+ 			<p:inputText value="#{studentService.student.state}" 
+                          required="true"
+                         
+                          requiredMessage="You must enter state"
+                          validatorMessage="state should contain only appropriate numeric, alphabet, or 
+alphanumeric characters"
+                           id="state">
+                  <f:validateLength  maximum="30"/>
+                  <f:validateRegex pattern="[a-zA-Z0-9 ]*"/> 
+            </p:inputText>
+          
+           
+       
+          
+    
+           Phone:*
+           <p:inputMask mask=" (999) 999-9999"
+               value="#{studentService.student.phone}" 
+                          required="true"
+                          requiredMessage="You must enter phone number"
+                          validatorMessage="phone number should have the following pattern: (xxx)-xxx-xxxx"
+                           id="phone" />
+                
+           
+          
+           
+        	 Email:*
+          <p:inputText value="#{studentService.student.email}" 
+                          required="true"
+                          requiredMessage="You must enter email"
+                          validatorMessage="email should be valid"
+                           id="email">
+               <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+
+            </p:inputText>
+
+           
+             Survey Date:*
+          <p:calendar value="#{studentService.student.surveydate}" 
+                  
+                          required="true"
+                          requiredMessage="You must enter date"
+                         id="startdate" />
+       
+          
+           Semester start Date:*
+          <p:calendar value="#{studentService.student.semesterstartdate}" 
+                          required="true"
+                          requiredMessage="You must enter date"
+                         id="enddate" />
+                          
+                         
+                        <!--  <f:attribute name="startDateComponent" value="#{startDateComponent}" />-->
+       
+           
+       What did you like most about the campus?
+      
+      <p:selectManyCheckbox value="#{studentService.student.likedthings}"
+                         required="true"
+                          requiredMessage="Select an option in What did you like most about the campus?"
+                          id = "likedthings">
+         <f:selectItem itemValue="students" itemLabel="students " />                 
+        <f:selectItem itemValue="location" itemLabel="location " />
+        <f:selectItem itemValue="campus" itemLabel="campus " />
+        <f:selectItem itemValue="atmosphere" itemLabel="atmosphere " />
+        <f:selectItem itemValue="dorm room" itemLabel="dorm room " />
+        <f:selectItem itemValue="sports" itemLabel="sports " />
+        
+</p:selectManyCheckbox>
+
+        
+        
+        How did you hear about GMU?
+       
+         <p:selectOneRadio value="#{studentService.student.interest}" 
+                                 required="true"
+                          requiredMessage="Select an option in   How did you hear about GMU?"
+                          id = "interest">
+                          
+        <f:selectItem itemValue="friends" itemLabel="Friends " />
+        <f:selectItem itemValue="television" itemLabel="Television " />
+        <f:selectItem itemValue="internet" itemLabel="Internet " />
+        <f:selectItem itemValue="other" itemLabel="Other " />
+        
+         </p:selectOneRadio>
+       
+
+        How likely are you to recommend George Mason to others?
+        
+             <p:autoComplete value="#{studentService.student.rating}" 
+                                completeMethod="#{studentService.completeRating}"
+                                forceSelection="true"
+                                 required="true"
+                          requiredMessage="Select an option in  How likely are you to recommend George Mason to others?"
+                          id = "rating" />
+                         
+        	
+           Raffle: 
+           <p:inputText value="#{studentService.student.data}" 
+                          required="true"
+                          requiredMessage="You must enter 10 comma seperated numbers"
+                         id="data">
+                   
+            </p:inputText>
+           
+            
+        Additional comments
+       	<p:inputTextarea cols="40" rows="4" id="comments" value="#{studentService.student.comments}"/>  
+      </h:panelGrid>
+      
+           <p:commandButton value = "Submit" action="#{studentService.navigate}" ajax="false" />
+    <p:commandButton value="Cancel" immediate="true" action="cancel" ajax="false"  />
+
+
+	</h:form>
+	 <a href= " https://s3-us-west-2.amazonaws.com/nsimon2swe645/index.html">return to home page</a>
+ 
+
+</h:body>
+</html>

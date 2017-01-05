@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+
+    	<managed-bean>
+		<managed-bean-name>studentService</managed-bean-name>
+		<managed-bean-class>assignment.StudentService</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+    <navigation-rule> 
+ 
+     <from-view-id>/SurveyForm.xhtml</from-view-id> 
+     
+     <navigation-case>
+       <from-outcome>thankyou</from-outcome>
+       <to-view-id>/ SimpleAcknowledgement.xhtml</to-view-id> 
+     </navigation-case>
+     <navigation-case>
+       <from-outcome>winner</from-outcome>
+        <to-view-id>/WinnerAcknowledgement.xhtml</to-view-id> 
+     </navigation-case>
+     <navigation-case>
+       <from-outcome>cancel</from-outcome>
+        <to-view-id>/SurveyForm.xhtml</to-view-id> 
+     </navigation-case>
+     </navigation-rule>
+    
+       <navigation-rule> 
+ 
+     <from-view-id>/search.xhtml</from-view-id> 
+     <navigation-case>
+     <from-outcome>Nomatch</from-outcome>
+       <to-view-id>/Nomatch.xhtml</to-view-id> 
+     </navigation-case>
+     <navigation-case>
+     <from-outcome>Searchmatch</from-outcome>
+       <to-view-id>/Searchmatch.xhtml</to-view-id> 
+     </navigation-case>
+     </navigation-rule>
+</faces-config>
+
+
