@@ -1,0 +1,24 @@
+<!-- NeethuSimon Assignment2
+winner page-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" >
+<h:head>
+
+<title>winner page</title>
+<link href= "https://s3.amazonaws.com/nsimon2/tablestyle.css" rel="stylesheet"
+    type="text/css" />
+
+</h:head>
+<h:body>
+<h2> Congratulations! you won two movie tickets</h2><br />
+<p>your information is saved successfully</p>
+<li>Student First Name:#{studentService.student.firstName}</li>
+<li>Last Name :#{studentService.student.lastName}</li>
+<li>mean:#{studentService.wr.mean}</li>
+<li>standard deviation:#{studentService.wr.deviation}</li>
+<a href= " SurveyForm.xhtml">return to Survey Form</a>
+</h:body>
+</html>
